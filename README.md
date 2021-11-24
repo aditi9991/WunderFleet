@@ -8,7 +8,7 @@ The app contains two screens described below
 2. Car Detail Activity screen shows the image of the vehicle and details and table , also a button to book for rent.
 
 
---The architecture used in MVVM tonsure separation of concerns.
+--The architecture used in MVVM to ensure separation of concerns.
 -- all network calls are made using RX retrofit library.
 
 
