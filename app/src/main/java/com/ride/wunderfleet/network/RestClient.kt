@@ -1,17 +1,16 @@
 package com.ride.wunderfleet.network
 
 import com.ride.wunderfleet.BuildConfig
-import retrofit2.Retrofit
-import kotlin.jvm.Synchronized
-import com.ride.wunderfleet.network.RestClient
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import okhttp3.logging.HttpLoggingInterceptor
 import java.util.concurrent.TimeUnit
 
 object RestClient {
     private var retrofit: Retrofit? = null
+    private var carRetrofit: Retrofit? = null
 
     @get:Synchronized
     val client: Retrofit?
@@ -27,24 +26,24 @@ object RestClient {
             }
             return retrofit
         }
+
     @get:Synchronized
     val clientRentCar: Retrofit?
         get() {
-            if (retrofit == null) {
-                val okHttpClient = okHttpClient
-                retrofit = Retrofit.Builder()
+            if (carRetrofit == null) {
+                carRetrofit = Retrofit.Builder()
                     .baseUrl("https://4i96gtjfia.execute-api.eu-central-1.amazonaws.com/default/")
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())
                     .client(okHttpClient)
                     .build()
             }
-            return retrofit
+            return carRetrofit
         }
 
 
     private val okHttpClient: OkHttpClient
-        private get() {
+        get() {
             val httpLoggingInterceptor = HttpLoggingInterceptor()
             return OkHttpClient.Builder()
                 .readTimeout(60, TimeUnit.SECONDS)

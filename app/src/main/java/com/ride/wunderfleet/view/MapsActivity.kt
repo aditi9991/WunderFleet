@@ -13,7 +13,7 @@ import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.ride.wunderfleet.CarsResponse
+import com.ride.wunderfleet.models.CarsResponse
 import com.ride.wunderfleet.ExtensionFuns.readAssetsFile
 import com.ride.wunderfleet.R
 import com.ride.wunderfleet.databinding.ActivityMapsBinding

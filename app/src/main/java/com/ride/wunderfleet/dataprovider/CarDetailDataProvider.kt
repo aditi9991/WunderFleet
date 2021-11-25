@@ -1,6 +1,7 @@
 package com.ride.wunderfleet.dataprovider
 
 import com.ride.wunderfleet.models.CarDetailsResponse
+import com.ride.wunderfleet.models.CarRentModel
 import com.ride.wunderfleet.models.CarRentResponse
 import com.ride.wunderfleet.viewmodel.CarDetailsViewModel
 import io.reactivex.disposables.Disposable
@@ -15,7 +16,7 @@ interface CarDetailDataProvider {
     ): Disposable
 
     fun rentCar(
-        rencarRentModel: CarDetailsViewModel.carRentModel,
+        rencarRentModel: CarRentModel,
         success: Consumer<CarRentResponse>,
         error: Consumer<Throwable>
     ): Disposable

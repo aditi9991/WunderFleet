@@ -2,6 +2,7 @@ package com.ride.wunderfleet
 
 import com.ride.wunderfleet.dataprovider.CarDetailDataNetworkProvider
 import com.ride.wunderfleet.models.CarDetailsResponse
+import com.ride.wunderfleet.models.CarRentModel
 import com.ride.wunderfleet.models.CarRentResponse
 import com.ride.wunderfleet.viewmodel.CarDetailsViewModel
 import io.reactivex.disposables.CompositeDisposable
@@ -27,7 +28,7 @@ class CarDetailsManager(private val compositeDisposable: CompositeDisposable?) {
     }
 
     fun rentCar(
-        carrentModel: CarDetailsViewModel.carRentModel,
+        carrentModel: CarRentModel,
         response: Consumer<CarRentResponse>,
         error: Consumer<Throwable>
     ) {

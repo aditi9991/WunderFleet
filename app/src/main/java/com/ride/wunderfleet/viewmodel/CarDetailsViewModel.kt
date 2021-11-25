@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModel
 import com.ride.wunderfleet.AppApplicationClass
 import com.ride.wunderfleet.CarDetailsManager
 import com.ride.wunderfleet.models.CarDetailsResponse
+import com.ride.wunderfleet.models.CarRentModel
+import com.ride.wunderfleet.models.CarRentResponse
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.functions.Consumer
 
@@ -34,15 +36,18 @@ class CarDetailsViewModel : ViewModel() {
             error.accept(er)
         })
     }
-    class carRentModel {
-        var carId: Int? = null
 
-    }
-    fun rentCar(carrentModel: carRentModel) {
+    fun rentCar(
+        carrentModel: CarRentModel,
+        success: Consumer<CarRentResponse>,
+        error: Consumer<Throwable>
+    ) {
         manager.rentCar(carrentModel, { response ->
-            Toast.makeText(AppApplicationClass.context, "Success", Toast.LENGTH_LONG).show()
-        }, { error ->
-            Toast.makeText(AppApplicationClass.context, "Error", Toast.LENGTH_LONG).show()
+            Toast.makeText(AppApplicationClass.context, "Booking is success", Toast.LENGTH_LONG).show()
+            success.accept(response)
+        }, { err ->
+            Toast.makeText(AppApplicationClass.context, "Booking is failed! Please try after some time", Toast.LENGTH_LONG).show()
+            error.accept(err)
         })
     }
 }
